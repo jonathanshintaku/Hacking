@@ -1,4 +1,5 @@
 <?php
+
     $pageURL = 'http';
     
     if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
@@ -10,7 +11,8 @@
     }
 
     $file = fopen("cookie.txt","a+");
-	fputs($file,"$pageURL");
-	fputs($file,"\n");
-	fclose($file);
+    fputs($file,"$pageURL");
+    fputs($file,"\n");
+    fclose($file);
+    
 ?>
