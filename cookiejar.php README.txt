@@ -34,5 +34,5 @@ session can be hijacked.
 Once the user clicks on the above link, the cookiejar.php file should store the session information on the 
 attacker's server and then you can login with the stolen credentials. 
 
-This type of exploit requires social engineering and thus it is rated typical low-medium risk on a heat map 
+This type of exploit requires social engineering and thus it is typically rated low-medium risk on a heat map 
 due to the extra level of effort required to pull it off.
